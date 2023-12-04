@@ -38,7 +38,7 @@ NOTE: Make sure to preface these variables with an underscore "_" or the script 
 
 Run the script using the following command:
 
-`python grabIt.py [hostnames...]`
+`python grab.py [hostnames...]`
 
 
 - If no hostnames are provided, the script will attempt to download attachments from all configured servers in the `servers.env` file.

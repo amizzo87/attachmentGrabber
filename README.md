@@ -1,6 +1,6 @@
 # Attachment Grabber
 
-This script is designed to connect to specified IMAP servers, search for emails, and download attachments from these emails.
+Quick 'n dirty script designed to connect to specified IMAP servers, search all emails, and download attachments from these emails _without_ any impact on the emails or attachments on the server.
 
 ## Prerequisites
 
@@ -22,19 +22,23 @@ Before running the script, you need to set up the following configurations:
     SERVERNAME_use_ssl=True
     ```
 
-   Replace `SERVERNAME` with a unique identifier for each server.
+   Replace `SERVERNAME` with a unique identifier for each server. 
+   
+   You can create as many sets of IMAP servers as you'd like; this script will download attachments from them concurrently.
 
-2. **Environment Variables**: If you want to use Sentry for error reporting, you can set the following environment variables:
+2. **Environment Variables**: If you want to use Sentry for error reporting (optional - otherwise logs are written to the same directory into which the script is ran), you can set the following environment variables:
 
     - `_LOG_TO_SENTRY`: Set to `true` to enable logging to Sentry.
     - `_SENTRY_DSN`: Your Sentry DSN for logging.
-    - `_SENTRY_LOG_LEVEL`: Sentry log level (e.g., `ERROR`, `INFO`).
+    - `_SENTRY_LOG_LEVEL`: Sentry log level (`ERROR`, or `INFO`).
+
+NOTE: Make sure to preface these variables with an underscore "_" or the script will try to parse these as IMAP server credentials and the world will end.
 
 ## Usage
 
 Run the script using the following command:
 
-`python imap_attachment_downloader.py [hostnames...]`
+`python grabIt.py [hostnames...]`
 
 
 - If no hostnames are provided, the script will attempt to download attachments from all configured servers in the `servers.env` file.
